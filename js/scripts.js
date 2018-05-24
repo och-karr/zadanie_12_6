@@ -20,6 +20,10 @@ function showCountriesList(resp) {
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
 		$('<li>').text(item.name).appendTo(countriesList);
+		$('<li>').text(item.capital).appendTo(countriesList);
+		$('<li>').text(item.area).appendTo(countriesList);
+		$('<li>').text(item.population).appendTo(countriesList);
+		$('<li>').text(item.region).appendTo(countriesList);
 		//Ten kod wykona się na kazdym elemencie kolekcji. Kazdy item jest ukryty w zmiennej.
 		//dodajemy element do listy
 	 });
