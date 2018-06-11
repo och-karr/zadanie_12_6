@@ -46,7 +46,7 @@ function showCountriesList(resp) {
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
 		$('<li>').text(item.alpha2Code).appendTo(countriesList);
-		$( 'ul>first-of-type').addClass('txt');
+		$( 'ul>li:first-of-type').addClass('txt');
 		$('<li>').text(item.name).appendTo(countriesList);
 		$('<li>').text(item.capital).appendTo(countriesList);
 		$('<li>').text(item.area).appendTo(countriesList);
