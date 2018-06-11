@@ -21,10 +21,10 @@ function searchCountries() {
 	});
 }
 
-function showFlag(code) {
+function showFlag(codeString) {
 	header.empty(); 
-	resp.forEach(function(code){
-		$("#flag").attr("src",flags1+code+flags2);
+	codeString.forEach(function(codeString){
+		$("#flag").attr("src",flags1+codeString+flags2);
 	});
 }
 
@@ -32,8 +32,8 @@ function showFlag(code) {
 function showHeaders(resp) {
 	header.empty(); 
 	resp.forEach(function(){
+		$('<li>').text('Code: ' ).appendTo(header);
 		$('<li>').text('Name of country: ' ).appendTo(header);
-		$( 'ul>first-of-type').addClass('txt');
 		$('<li>').text('Capital: ').appendTo(header);
 		$('<li>').text('Area: ').appendTo(header);
 		$('<li>').text('Population: ').appendTo(header);
@@ -41,14 +41,13 @@ function showHeaders(resp) {
 	 });
 }
 
-var code = document.getElementById("txt").innerHTML;
-
 
 function showCountriesList(resp) {
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
+		$('<li>').text(item.alpha2Code).appendTo(countriesList);
+		$( 'ul>first-of-type').addClass('txt');
 		$('<li>').text(item.name).appendTo(countriesList);
-
 		$('<li>').text(item.capital).appendTo(countriesList);
 		$('<li>').text(item.area).appendTo(countriesList);
 		$('<li>').text(item.population).appendTo(countriesList);
@@ -57,6 +56,9 @@ function showCountriesList(resp) {
 		//dodajemy element do listy
 	 });
 }
+
+var code = document.getElementsByClassName("txt").innerHTML;
+var codeString = JSON.stringify(code);
 
 
 
