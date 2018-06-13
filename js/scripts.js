@@ -21,12 +21,13 @@ function searchCountries() {
 	});
 }
 
-function showFlag(codeString) {
-	header.empty(); 
-	codeString.forEach(function(codeString){
-		$("#flag").attr("src",flags1+codeString+flags2);
-	});
-}
+// function showFlag(codeString) {
+// 	header.empty(); 
+// 	codeString.forEach(function(codeString){
+// 		console.log(codeString);
+// 		$("#flag").attr("src",flags1+codeString+flags2);
+// 	});
+// }
 
 
 function showHeaders(resp) {
@@ -45,8 +46,13 @@ function showHeaders(resp) {
 function showCountriesList(resp) {
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
+		console.log(item.alpha2Code);
+		var codeString = JSON.stringify(item.alpha2Code);
+		// showFlag (codeString);
+		console.log(codeString);
+		showHeaders(resp);
 		$('<li>').text(item.alpha2Code).appendTo(countriesList);
-		$( 'ul>li:first-of-type').addClass('txt');
+		// $( 'ul>li:first-of-type').addClass('txt');
 		$('<li>').text(item.name).appendTo(countriesList);
 		$('<li>').text(item.capital).appendTo(countriesList);
 		$('<li>').text(item.area).appendTo(countriesList);
@@ -57,15 +63,14 @@ function showCountriesList(resp) {
 	 });
 }
 
-var code = document.getElementsByClassName("txt").innerHTML;
-var codeString = JSON.stringify(code);
+// var code = document.getElementsByClassName("txt").innerHTML;
+// console.log(item.alpha2Code);
+
 
 
 
 function showCountries(resp) {
-	showHeaders(resp);
 	showCountriesList(resp);
-	showFlag(resp);
 }
 
 // function showCountriesList(resp) {
