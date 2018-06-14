@@ -1,6 +1,6 @@
 var url = 'https://restcountries.eu/rest/v1/name/';
 var flags1 = 'http://www.countryflags.io/';
-var flags2 = '/flat/64.png';
+var flags2 = '/shiny/64.png';
 var flag = $('#flag');
 var header = $('#properties');
 var countriesList = $('#countries'); //lista ul z id countries
@@ -21,13 +21,10 @@ function searchCountries() {
 	});
 }
 
-// function showFlag(codeString) {
-// 	header.empty(); 
-// 	codeString.forEach(function(codeString){
-// 		console.log(codeString);
-// 		$("#flag").attr("src",flags1+codeString+flags2);
-// 	});
-// }
+function showFlag(code) {
+	flag.empty(); 
+	$('<img>').attr("src",flags1+code+flags2).appendTo(flag);
+}
 
 
 function showHeaders(resp) {
@@ -42,14 +39,11 @@ function showHeaders(resp) {
 	 });
 }
 
-
 function showCountriesList(resp) {
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
-		console.log(item.alpha2Code);
-		var codeString = JSON.stringify(item.alpha2Code);
-		// showFlag (codeString);
-		console.log(codeString);
+		showFlag (item.alpha2Code);
+		console.log(resp.length);
 		showHeaders(resp);
 		$('<li>').text(item.alpha2Code).appendTo(countriesList);
 		// $( 'ul>li:first-of-type').addClass('txt');
