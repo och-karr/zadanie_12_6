@@ -21,8 +21,7 @@ function searchCountries() {
 	});
 }
 
-function showFlag(code) {
-	flag.empty(); 
+function showFlag(code) { 
 	$('<img>').attr("src",flags1+code+flags2).appendTo(flag);
 }
 
@@ -39,7 +38,9 @@ function showHeaders(resp) {
 	 });
 }
 
+
 function showCountriesList(resp) {
+	flag.empty();
 	countriesList.empty(); //wyczyszczenie listy krajow po porz. zapytaniu
 	resp.forEach(function(item){
 		showFlag (item.alpha2Code);
